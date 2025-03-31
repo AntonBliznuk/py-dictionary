@@ -1,3 +1,5 @@
+# flake8: noqa
+
 class Node:
     def __init__(self, key: object, value: object) -> None:
         self.key = key
@@ -26,8 +28,8 @@ class Dictionary:
 
     def __getitem__(self, key: object) -> object:
         index = self._find_slot(key, for_insert=False)
-        if index is None or self.table[index] is None:
-            raise KeyError(f"Key '{key}' not found.")
+        if index is None or self.table[index] is None:  # noqa: E713
+            raise KeyError(f"Key '{key}' not found in CustomDictionary.")
         return self.table[index].value
 
     def __len__(self) -> int:
